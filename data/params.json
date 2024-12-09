@@ -1,5 +1,5 @@
 {
-  "print": true,
+  "print": false,
   "sementeInicio": 1,
   "sementeFim": 5000,
   "numClientes": 120,

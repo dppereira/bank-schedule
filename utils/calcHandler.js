@@ -1,4 +1,4 @@
-import config from "../data/params.json" with { type: 'json' }; 
+import { Logger } from "./Logger.js";
 
 // Função para calcular o tempo médio de espera na fila
 export function calcularTempoMedioEsperaFila(clientes) {
@@ -8,9 +8,7 @@ export function calcularTempoMedioEsperaFila(clientes) {
   );
   const mediaFila = somaFila / clientes.length;
 
-  if (config.print) {
-    console.log(`\nTempo Médio de Espera na Fila: ${mediaFila.toFixed(2)}`);
-  }
+  Logger.log(`\nTempo Médio de Espera na Fila: ${mediaFila.toFixed(2)}`);
 
   return mediaFila;
 }
@@ -20,9 +18,7 @@ export function calcularMediaTS(clientes) {
   const somaTS = clientes.reduce((soma, cliente) => soma + cliente.ts, 0);
   const mediaTS = somaTS / clientes.length;
 
-  if (config.print) {
-    console.log(`\nTempo Médio de Serviço (TS): ${mediaTS.toFixed(2)}`);
-  }
+  Logger.log(`\nTempo Médio de Serviço (TS): ${mediaTS.toFixed(2)}`);
 
   return mediaTS;
 }
@@ -35,9 +31,7 @@ export function calcularMediaTempoSistema(atendidos) {
   );
   const mediaSistema = somaSistema / atendidos.length;
 
-  if (config.print) {
-    console.log(`\nTempo Médio no Sistema: ${mediaSistema.toFixed(2)}`);
-  }
+  Logger.log(`\nTempo Médio no Sistema: ${mediaSistema.toFixed(2)}`);
 
   return mediaSistema;
 }
@@ -47,28 +41,22 @@ export function calcularMediaOciosidade(funcionarios) {
   let totalOciosidade = 0;
   let totalAtendimentos = 0;
 
-  if (config.print) {
-    console.log("\nTempo Médio Ocioso por Funcionário:");
-  }
+  Logger.log("\nTempo Médio Ocioso por Funcionário:");
 
   funcionarios.forEach((funcionario) => {
     // Verifica se o funcionário atendeu algum cliente
     if (funcionario.numAtendimentos > 0) {
       const mediaOciosidadeFuncionario =
         funcionario.ocio / funcionario.numAtendimentos;
-      if (config.print) {
-        console.log(
-          `Funcionário ID ${
-            funcionario.id
-          }: Média de Ociosidade = ${mediaOciosidadeFuncionario.toFixed(2)}`
-        );
-      }
+      Logger.log(
+        `Funcionário ID ${
+          funcionario.id
+        }: Média de Ociosidade = ${mediaOciosidadeFuncionario.toFixed(2)}`
+      );
     } else {
-      if (config.print) {
-        console.log(
-          `Funcionário ID ${funcionario.id}: Não atendeu nenhum cliente.`
-        );
-      }
+      Logger.log(
+        `Funcionário ID ${funcionario.id}: Não atendeu nenhum cliente.`
+      );
     }
 
     totalOciosidade += funcionario.ocio;
@@ -79,11 +67,7 @@ export function calcularMediaOciosidade(funcionarios) {
   const mediaOciosidadeTotal =
     totalAtendimentos > 0 ? totalOciosidade / totalAtendimentos : 0;
 
-  if (config.print) {
-    console.log(
-      `\nTempo Médio Ocioso Total: ${mediaOciosidadeTotal.toFixed(2)}`
-    );
-  }
+  Logger.log(`\nTempo Médio Ocioso Total: ${mediaOciosidadeTotal.toFixed(2)}`);
 
   return mediaOciosidadeTotal;
 }

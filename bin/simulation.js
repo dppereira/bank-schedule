@@ -8,7 +8,7 @@ import {
   calcularMediaOciosidade,
   calcularMediaTS,
 } from "../utils/calcHandler.js";
-import { exibirTabela } from "../utils/printHandler.js";
+import { exibirTabela } from "../utils/tablePrint.js";
 
 // Função para simular o banco
 export function simularBanco(

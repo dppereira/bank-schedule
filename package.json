@@ -1,0 +1,26 @@
+{
+  "name": "schedule-bank",
+  "version": "1.0.0",
+  "main": "bin/main.js",
+  "type": "module",
+  "bin": {
+    "schedule-bank": "bin/main.js"
+  },
+  "scripts": {
+    "start": "node bin/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dppereira/bank-schedule.git"
+  },
+  "keywords": [
+    "bank"
+  ],
+  "author": "dppereira",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dppereira/bank-schedule/issues"
+  },
+  "homepage": "https://github.com/dppereira/bank-schedule#readme",
+  "description": ""
+}

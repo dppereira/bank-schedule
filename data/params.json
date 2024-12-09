@@ -1,0 +1,8 @@
+{
+  "print": true,
+  "sementeInicio": 1,
+  "sementeFim": 5000,
+  "numClientes": 120,
+  "numFuncionarios": 4,
+  "tempoMaximo": 1800
+}
